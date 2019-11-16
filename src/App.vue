@@ -1,11 +1,7 @@
 <template>
   <div id="app">
-    <span>APP</span> <van-button square type="primary">方形按钮</van-button>
+    <router-view></router-view>
   </div>
 </template>
 
-<style lang="less">
-span{
-  font-size: 20px
-}
-</style>
+<style lang="less"></style>
