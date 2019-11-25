@@ -57,7 +57,9 @@ instance.interceptors.response.use(res => {
     const user = store.state.user
     // 没登录 (严谨代码)
     if (!user || !user.token || !user.refresh_token) {
-      return router.push(loginConfig)
+      router.push(loginConfig)
+      // 让函数接受一个错误的promise 阻止程序运行
+      return Promise.reject(err)
     }
     try {
       // 发刷新token的请求
@@ -82,7 +84,9 @@ instance.interceptors.response.use(res => {
     } catch (e) {
       // 刷新token失败
       store.commit('delUser')
-      return router.push(loginConfig)
+      router.push(loginConfig)
+      // 让函数接受一个错误的promise 阻止程序运行
+      return Promise.reject(err)
     }
   }
   return Promise.reject(err)

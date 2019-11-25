@@ -7,9 +7,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // 用户信息
-    user: auth.getUser()
+    user: auth.getUser(),
+    // 头像
+    photo: null
   },
   mutations: {
+    // 修改头像
+    setPhoto (state, photo) {
+      state.photo = photo
+    },
     // 修改用户  user传参必须是对象
     setUser (state, user) {
       // 修改了vuex中的state , 如果刷新了页面重新获取本地的数据, 会丢失之前存储state
